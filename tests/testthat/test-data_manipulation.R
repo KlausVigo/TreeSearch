@@ -26,6 +26,11 @@ test_that("Minimum step counts are correctly calculated", {
                                TreeTools::StringToPhyDat('11---22--33', letters[1:11])),
                MinimumLength(c(0, 0, 0, 0, 0, 0, 2, 2, 4, 4, 8, 8)))
 
+  x <- TreeTools::StringToPhyDat('------123', letters[1:9])
+  expect_equal(2, MaximumLength(x))
+  x <- TreeTools::StringToPhyDat('11111{12}{13}', letters[1:9])
+  expect_equal(0, MaximumLength(x))
+  
   # 04, 14, 24, 34, 05, 16, 27, 38, 9A
   # In this case, chosing the most common state (4) means that we have to choose 567&8 too
   # 012&3 is a better solution
